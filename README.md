@@ -84,7 +84,7 @@
     var items = [];
     ```
 
-  - Use Array#push instead of direct assignment to add items to an array.
+  - Use Array#push instead of direct assignment to add items to an array (unless you need to add to the array at a specific point).
 
     ```javascript
     var someStack = [];
@@ -94,6 +94,9 @@
 
     // good
     someStack.push("abracadabra");
+
+    // good
+    someStack[8] = "abracadabra"
     ```
 
   - When you need to copy an array use Array#slice. [jsPerf](http://jsperf.com/converting-arguments-to-an-array/7)
@@ -104,7 +107,7 @@
     var i;
 
     // bad
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < len; i++){
       itemsCopy[i] = items[i];
     }
 
@@ -160,17 +163,17 @@
 
     ```javascript
     // function expression - use
-    var doSomething = function() {
+    var doSomething = function(){
       return true;
     };
 
     // function declaration - don't use
-    function doSomething() {
+    function doSomething(){
       return true;
     };
 
     // immediately-invoked function expression (IIFE)
-    (function() {
+    (function(){
       console.log("Welcome to the Internet. Please follow me.");
     })();
     ```
@@ -179,12 +182,12 @@
 
     ```javascript
     // bad
-    function nope(name, options, arguments) {
+    function nope(name, options, arguments){
       // ...stuff...
     }
 
     // good
-    function yup(name, options, args) {
+    function yup(name, options, args){
       // ...stuff...
     }
     ```
@@ -218,7 +221,7 @@
       age: 28
     };
 
-    function getProp(prop) {
+    function getProp(prop){
       return luke[prop];
     }
 
@@ -290,7 +293,7 @@
 
     ```javascript
     // bad
-    function() {
+    function(){
       test();
 
       var name = getName();
@@ -299,7 +302,7 @@
     }
 
     // good
-    function() {
+    function(){
       var name = getName();
 
       test();
@@ -324,7 +327,7 @@
     + **Strings** evaluate to **false** if an empty string `""`, otherwise **true**
 
     ```javascript
-    if ([0]) {
+    if ([0]){
       // true
       // An array is an object, objects evaluate to true
     }
@@ -334,22 +337,22 @@
 
     ```javascript
     // bad
-    if (name !== "") {
+    if (name !== ""){
       // ...stuff...
     }
 
     // good
-    if (name) {
+    if (name){
       // ...stuff...
     }
 
     // bad
-    if (collection.length > 0) {
+    if (collection.length > 0){
       // ...stuff...
     }
 
     // good
-    if (collection.length) {
+    if (collection.length){
       // ...stuff...
     }
     ```
@@ -372,15 +375,15 @@
     if (test) return false;
 
     // good
-    if (test) {
+    if (test){
       return false;
     }
 
     // bad
-    function() { return false; }
+    function(){ return false; }
 
     // good
-    function() {
+    function(){
       return false;
     }
 
@@ -397,7 +400,7 @@
 
     ```javascript
     // bad
-    if (test) {
+    if (test){
       thing1();
       thing2();
     } else {
@@ -405,7 +408,7 @@
     }
 
     // good
-    if (test) {
+    if (test){
       thing1();
       thing2();
     }
@@ -431,7 +434,7 @@
   //
   // has a parameter "tag" which is a string
   // returns an element
-  function make(tag) {
+  function make(tag){
 
     // ...stuff...
 
@@ -447,7 +450,7 @@
    * @param {String} tag
    * @return {Element} element
    */
-  function make(tag) {
+  function make(tag){
 
     // ...stuff...
 
@@ -466,7 +469,7 @@
     var active = true;
 
     // bad
-    function getType() {
+    function getType(){
       console.log("fetching type...");
       // set the default type to "no type"
       var type = this._type || "no type";
@@ -475,7 +478,7 @@
     }
 
     // good
-    function getType() {
+    function getType(){
       console.log("fetching type...");
 
       // set the default type to "no type"
@@ -491,7 +494,7 @@
   - Use `// TODO:` to annotate solutions to problems.
 
     ```javascript
-    function Calculator() {
+    function Calculator(){
 
       // TODO: total should be configurable by an options param
       this.total = 0;
@@ -524,17 +527,33 @@
     }
     ```
 
-  - Place no spaces before the leading brace.
+  - Place no spaces before the leading brace. Unless there is no curly bracket preceeding the brace, in which case, place one space.
 
     ```javascript
     // bad
-    function test() {
+    function test(){
       console.log("test");
     }
 
     // good
     function test(){
       console.log("test");
+    }
+
+    //bad
+    if (name === "Mike"){
+      return true;
+    }
+    else{
+        return false;
+    }
+
+    //good
+    if (name === "Mike"){
+      return true;
+    }
+    else {
+        return false;
     }
     ```
 
@@ -598,14 +617,14 @@
 
     ```javascript
     // bad
-    (function(global) {
+    (function(global){
       // ...stuff...
     })(this);
     ```
 
     ```javascript
     // bad
-    (function(global) {
+    (function(global){
       // ...stuff...
     })(this);↵
     ↵
@@ -613,7 +632,7 @@
 
     ```javascript
     // good
-    (function(global) {
+    (function(global){
       // ...stuff...
     })(this);↵
     ```
@@ -637,13 +656,13 @@
 
     ```javascript
     // bad
-    if (foo) {
+    if (foo){
       return bar;
     }
     return baz;
 
     // good
-    if (foo) {
+    if (foo){
       return bar;
     }
 
@@ -651,19 +670,19 @@
 
     // bad
     var obj = {
-      foo: function() {
+      foo: function(){
       },
-      bar: function() {
+      bar: function(){
       }
     };
     return obj;
 
     // good
     var obj = {
-      foo: function() {
+      foo: function(){
       },
 
-      bar: function() {
+      bar: function(){
       }
     };
 
@@ -729,13 +748,13 @@
     return ((1 + 5) * 3);
 
         // bad
-    (function() {
+    (function(){
       var name = "Skywalker"
       return name
     })()
 
     // good
-    (function() {
+    (function(){
       var name = "Skywalker";
       return name;
     })();
@@ -757,12 +776,12 @@
 
     ```javascript
     // bad
-    function q() {
+    function q(){
       // ...stuff...
     }
 
     // good
-    function query() {
+    function query(){
       // ..stuff..
     }
     ```
@@ -774,18 +793,18 @@
     var OBJEcttsssss = {};
     var this_is_my_object = {};
     var o = {};
-    function c() {}
+    function c(){}
 
     // good
     var thisIsMyObject = {};
-    function thisIsMyFunction() {}
+    function thisIsMyFunction(){}
     ```
 
   - Use PascalCase when naming constructors or classes.
 
     ```javascript
     // bad
-    function user(options) {
+    function user(options){
       this.name = options.name;
     }
 
@@ -794,7 +813,7 @@
     });
 
     // good
-    function User(options) {
+    function User(options){
       this.name = options.name;
     }
 
@@ -807,25 +826,25 @@
 
     ```javascript
     // bad
-    function() {
+    function(){
       var self = this;
-      return function() {
+      return function(){
         console.log(self);
       };
     }
 
     // bad
-    function() {
+    function(){
       var that = this;
-      return function() {
+      return function(){
         console.log(that);
       };
     }
 
     // good
-    function() {
+    function(){
       var _this = this;
-      return function() {
+      return function(){
         console.log(_this);
       };
     }
@@ -853,7 +872,7 @@
 
     ```javascript
     // bad
-    function setSidebar() {
+    function setSidebar(){
       $(".sidebar").hide();
 
       $(".sidebar").css({
@@ -862,7 +881,7 @@
     }
 
     // good
-    function setSidebar() {
+    function setSidebar(){
       var $sidebar = $(".sidebar");
 
       $sidebar.hide();
