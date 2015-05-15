@@ -1,6 +1,6 @@
-# ~~Airbnb~~ Super natural JavaScript Style Guide() {
+# Super natural JavaScript Style Guide() {
 
-*A mostly reasonable approach to JavaScript*
+*Restricted area. Serious code slingers only past this point*
 
 
 ## Table of Contents
@@ -40,13 +40,13 @@
     ```javascript
     // bad
     var superman = {
-      default: { clark: 'kent' },
+      default: { clark: "kent" },
       private: true
     };
 
     // good
     var superman = {
-      defaults: { clark: 'kent' },
+      defaults: { clark: "kent" },
       hidden: true
     };
     ```
@@ -56,17 +56,17 @@
     ```javascript
     // bad
     var superman = {
-      class: 'alien'
+      class: "alien"
     };
 
     // bad
     var superman = {
-      klass: 'alien'
+      klass: "alien"
     };
 
     // good
     var superman = {
-      type: 'alien'
+      type: "alien"
     };
     ```
 
@@ -90,10 +90,10 @@
     var someStack = [];
 
     // bad
-    someStack[someStack.length] = 'abracadabra';
+    someStack[someStack.length] = "abracadabra";
 
     // good
-    someStack.push('abracadabra');
+    someStack.push("abracadabra");
     ```
 
   - When you need to copy an array use Array#slice. [jsPerf](http://jsperf.com/converting-arguments-to-an-array/7)
@@ -137,18 +137,18 @@
 
     ```javascript
     // bad
-    var errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+    var errorMessage = "This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.";
 
     // bad
-    var errorMessage = 'This is a super long error that was thrown because \
+    var errorMessage = "This is a super long error that was thrown because \
     of Batman. When you stop to think about how Batman had anything to do \
     with this, you would get nowhere \
-    fast.';
+    fast.";
 
     // good
-    var errorMessage = 'This is a super long error that was thrown because ' +
-      'of Batman. When you stop to think about how Batman had anything to do ' +
-      'with this, you would get nowhere fast.';
+    var errorMessage = "This is a super long error that was thrown because " +
+      "of Batman. When you stop to think about how Batman had anything to do " +
+      "with this, you would get nowhere fast.";
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -171,7 +171,7 @@
 
     // immediately-invoked function expression (IIFE)
     (function() {
-      console.log('Welcome to the Internet. Please follow me.');
+      console.log("Welcome to the Internet. Please follow me.");
     })();
     ```
 
@@ -204,7 +204,7 @@
     };
 
     // bad
-    var isJedi = luke['jedi'];
+    var isJedi = luke["jedi"];
 
     // good
     var isJedi = luke.jedi;
@@ -222,7 +222,7 @@
       return luke[prop];
     }
 
-    var isJedi = getProp('jedi');
+    var isJedi = getProp("jedi");
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -249,18 +249,18 @@
     // bad
     var items = getItems(),
         goSportsTeam = true,
-        dragonball = 'z';
+        dragonball = "z";
 
     // bad
     // (compare to above, and try to spot the mistake)
     var items = getItems(),
         goSportsTeam = true;
-        dragonball = 'z';
+        dragonball = "z";
 
     // good
     var items = getItems();
     var goSportsTeam = true;
-    var dragonball = 'z';
+    var dragonball = "z";
     ```
 
   - Declare unassigned variables last. This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
@@ -321,7 +321,7 @@
     + **Null** evaluates to **false**
     + **Booleans** evaluate to **the value of the boolean**
     + **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
-    + **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
+    + **Strings** evaluate to **false** if an empty string `""`, otherwise **true**
 
     ```javascript
     if ([0]) {
@@ -334,7 +334,7 @@
 
     ```javascript
     // bad
-    if (name !== '') {
+    if (name !== "") {
       // ...stuff...
     }
 
@@ -434,19 +434,19 @@
 
     // bad
     function getType() {
-      console.log('fetching type...');
-      // set the default type to 'no type'
-      var type = this._type || 'no type';
+      console.log("fetching type...");
+      // set the default type to "no type"
+      var type = this._type || "no type";
 
       return type;
     }
 
     // good
     function getType() {
-      console.log('fetching type...');
+      console.log("fetching type...");
 
-      // set the default type to 'no type'
-      var type = this._type || 'no type';
+      // set the default type to "no type"
+      var type = this._type || "no type";
 
       return type;
     }
@@ -496,12 +496,12 @@
     ```javascript
     // bad
     function test() {
-      console.log('test');
+      console.log("test");
     }
 
     // good
     function test(){
-      console.log('test');
+      console.log("test");
     }
     ```
 
@@ -515,15 +515,15 @@
     doSomething(myVar, myOtherVar, anotherVar);
 
     // bad
-    dog.set('attr',{
-      age: '1 year',
-      breed: 'Bernese Mountain Dog'
+    dog.set("attr",{
+      age: "1 year",
+      breed: "Bernese Mountain Dog"
     });
 
     // good
-    dog.set('attr', {
-      age: '1 year',
-      breed: 'Bernese Mountain Dog'
+    dog.set("attr", {
+      age: "1 year",
+      breed: "Bernese Mountain Dog"
     });
     ```
 
@@ -542,12 +542,12 @@
 
     // bad
     function fight (){
-      console.log ('Swooosh!');
+      console.log ("Swooosh!");
     }
 
     // good
     function fight(){
-      console.log('Swooosh!');
+      console.log("Swooosh!");
     }
     ```
 
@@ -590,13 +590,13 @@
 
     ```javascript
     // bad
-    $('#items').find('.selected').highlight().addClass('.open').updateCount();
+    $("#items").find(".selected").highlight().addClass(".open").updateCount();
 
     // good
-    $('#items')
-      .find('.selected')
+    $("#items")
+      .find(".selected")
       .highlight()
-      .addClass('.open')
+      .addClass(".open")
       .updateCount();
     ```
 
@@ -661,18 +661,18 @@
 
     // bad
     var hero = {
-        firstName: 'Bob'
-      , lastName: 'Parr'
-      , heroName: 'Mr. Incredible'
-      , superPower: 'strength'
+        firstName: "Bob"
+      , lastName: "Parr"
+      , heroName: "Mr. Incredible"
+      , superPower: "strength"
     };
 
     // good
     var hero = {
-      firstName: 'Bob',
-      lastName: 'Parr',
-      heroName: 'Mr. Incredible',
-      superPower: 'strength'
+      firstName: "Bob",
+      lastName: "Parr",
+      heroName: "Mr. Incredible",
+      superPower: "strength"
     };
     ```
 
@@ -697,13 +697,13 @@
 
         // bad
     (function() {
-      var name = 'Skywalker'
+      var name = "Skywalker"
       return name
     })()
 
     // good
     (function() {
-      var name = 'Skywalker';
+      var name = "Skywalker";
       return name;
     })();
 
@@ -757,7 +757,7 @@
     }
 
     var bad = new user({
-      name: 'nope'
+      name: "nope"
     });
 
     // good
@@ -766,7 +766,7 @@
     }
 
     var good = new User({
-      name: 'yup'
+      name: "yup"
     });
     ```
 
@@ -810,10 +810,10 @@
 
     ```javascript
     // bad
-    var sidebar = $('.sidebar');
+    var sidebar = $(".sidebar");
 
     // good
-    var $sidebar = $('.sidebar');
+    var $sidebar = $(".sidebar");
     ```
 
   - Cache jQuery lookups.
@@ -821,21 +821,21 @@
     ```javascript
     // bad
     function setSidebar() {
-      $('.sidebar').hide();
+      $(".sidebar").hide();
 
-      $('.sidebar').css({
-        'background-color': 'pink'
+      $(".sidebar").css({
+        "background-color": "pink"
       });
     }
 
     // good
     function setSidebar() {
-      var $sidebar = $('.sidebar');
+      var $sidebar = $(".sidebar");
 
       $sidebar.hide();
 
       $sidebar.css({
-        'background-color': 'pink'
+        "background-color": "pink"
       });
     }
     ```
