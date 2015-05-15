@@ -420,7 +420,40 @@
 
 ## Comments
 
-  - Use `/**/` for muli line comments.
+  - Use `/** ... */` for muli line comments. Include a description and specify types and values for parameters and return values.
+  - Follow [YuiDoc](http://yui.github.io/yuidoc/) commenting guidelines. This is so we have the option to automatically generate documentation pages which list classes, methods, properties, etc.
+
+  ```javascript
+  // bad
+
+  // make() returns a new element
+  // based on the passed in tag name
+  //
+  // has a parameter "tag" which is a string
+  // returns an element
+  function make(tag) {
+
+    // ...stuff...
+
+    return element;
+  }
+
+  // good
+
+  /**
+   * make() returns a new element
+   * based on the passed in tag name
+   *
+   * @param {String} tag
+   * @return {Element} element
+   */
+  function make(tag) {
+
+    // ...stuff...
+
+    return element;
+  }
+  ```
 
   - Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
 
